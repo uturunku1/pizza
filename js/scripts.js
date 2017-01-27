@@ -1,12 +1,12 @@
+// function order(pizzaQuantity) {
+//   this.pizzaQuantity = pizzaQuantity;
+//   this.pizzas = [];
+//   //this.totalcost=totalcost;
+// }
 function pizza(toppings,size) {
   this.toppings=toppings;
   this.size= size;
-  if (toppings.length===0) {
-    return "It is required to select at least one topping."
-  }
-
 }
-
 function returnCost(toppings,size) {
   if (toppings.length===4) {
     var costtoppings= 8;
@@ -24,18 +24,54 @@ function returnCost(toppings,size) {
   } else {
     return costtoppings + 20;
   }
-
 }
 
-pizza.prototype.reviewcost = function() {
-  return "The pizza you want to purchase is " + this.size + " size, with the following toppings: "+ this.toppings+". The total cost is " + this.totalcost +" dollars." ;
+// order.prototype.revieworder = function() {
+//   if (this.toppings.length===0 && !click()) {
+//     return "It is required to select at least one topping.";
+//   } else {
+//     return "You want to purchase" + this.pizzaQuantity+  " pizza(s):"+ "The total cost is " + this.totalcost + " dollars.";
+// }
+
+pizza.prototype.reviewpizza = function() {
+  if (this.toppings.length===0 && !click()) {
+    return "It is required to select at least one topping.";
+  } else {
+    return "<li>"+ this.size + " size, with " + this.toppings+ "</li>"+"<br>";
+  }
 }
-
-
 
 
 //user interface logic:
 $(document).ready(function() {
+  $("#addAnother").click(function() {
+    $(".another").append('<h3><u>Another Pizza</u></h3>'+
+
+    '<h3>Select your toppings:</h3>'+
+    '<div class="checkbox">'+
+      '<label><input type="checkbox" name="topping" value="Pepperoni">Pepperoni</label>'+
+    '</div>'+
+    '<div class="checkbox">'+
+      '<label><input type="checkbox" name="topping" value="Artichoke">Artichoke</label>'+
+    '</div>'+
+    '<div class="checkbox">'+
+      '<label><input type="checkbox" name="topping" value="Anchovy">Anchovy</label>'+
+    '</div>'+
+    '<div class="checkbox">'+
+      '<label><input type="checkbox" name="topping" value="Mushrooms">Mushrooms</label>'+
+    '</div>'+
+    '<h3>Select one size:</h3>'+
+    '<div class="radio">'+
+      '<label><input type="radio" name="size" value="large" checked>Large</label>'+
+    '</div>'+
+    '<div class="radio">'+
+      '<label><input type="radio" name="size" value="medium">Medium</label>'+
+    '</div>'+
+    '<div class="radio">'+
+      '<label><input type="radio" name="size" value="small">Small</label>'+
+    '</div>')
+  });
+
   $("form#select").submit(function(event) {
     event.preventDefault();
     var toppings=[]
@@ -46,11 +82,10 @@ $(document).ready(function() {
     })
     var size = $("input:radio[name=size]:checked").val();
     var newpizza= new pizza(toppings,size);
-    var cost = returnCost(toppings,size);
-    newpizza.totalcost = cost;
-
-
-    $("#outputCost").text(newpizza.reviewcost());
+    //var pizzaQuantity= //the number of newpizza;
+    //var newOrder= new order (pizzaQuantity, newpizza);
+    //newOrder.totalcost = returnCost(toppings,size);
+    $("#outputCost").append(newpizza.reviewpizza());
 
 
   })
