@@ -15,12 +15,12 @@ _Does not require a server or setting up a database._
 * 1. The program does not allow to click on submit button if you have not select at least one topping.
   * Input Example: var topping = NaN;
   * Output Example: "It is required to at least select one topping."
-* 2. The program takes the value of variables size and toppings and prototype returns the size and quantity of toppings.
+* 2. The program takes the value of variables toppings, size and quantity and prototype returns the quantity, size and list of toppings.
   * Input Example: var size = "small" and var toppings = [pepperoni, Artichoke]
-  * Output Example: Small size with pepperoni, artichoke.
-* 3. The program uses the value of variable size and variable toppings and returns the total cost of the pizza.
-  * Input Example: var size = "small" and var toppings = [pepperoni, Artichoke]
-  * Output Example: Small size with pepperoni, artichoke.The cost is 24 dollars.  
+  * Output Example: 1 small size with pepperoni, artichoke.
+* 3. The program uses the value of variables size, toppings and quantity and returns the cost of the pizza.
+  * Input Example: var size === "small"; var toppings.length===2; var quantity===1.
+  * Output Example: 1 small size with pepperoni, artichoke.The cost is 12 dollars.  
 * 4. The program requests input of name and address to do the delivery and gives a confirmation message.
   * Input Example: Name: Stella/ address: 1230 NW, Portland.
   * Output Example: Thank you, Stella at address: 1230 NW, Portland. The order will be there soon.
