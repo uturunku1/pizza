@@ -17,9 +17,9 @@ function returnCost(toppings,size) {
   }else if (toppings.length===1){
     costtoppings = 2;
   }
-  if (size==="small") {
+  if (size==="Small") {
     return costtoppings + 10;
-  }else if (size==="medium") {
+  }else if (size==="Medium") {
     return costtoppings + 15;
   } else {
     return costtoppings + 20;
@@ -34,10 +34,10 @@ function returnCost(toppings,size) {
 // }
 
 pizza.prototype.reviewpizza = function() {
-  if (this.toppings.length===0 && !click()) {
+  if (this.toppings.length===0) {
     return "It is required to select at least one topping.";
   } else {
-    return "<li>"+ this.size + " size, with " + this.toppings+ "</li>"+"<br>";
+    return this.size + " size, with " + this.toppings+ ". The total cost is " + this.totalcost + " dollars.";
   }
 }
 
@@ -78,15 +78,22 @@ $(document).ready(function() {
     $("input:checkbox[name=topping]:checked").each(function() {
       var topping = $(this).val();
       toppings.push(topping);
-      //$("#outputCost").append(toppings+"<br>");
     })
     var size = $("input:radio[name=size]:checked").val();
     var newpizza= new pizza(toppings,size);
-    //var pizzaQuantity= //the number of newpizza;
-    //var newOrder= new order (pizzaQuantity, newpizza);
-    //newOrder.totalcost = returnCost(toppings,size);
-    $("#outputCost").append(newpizza.reviewpizza());
-
-
+    //var pizzaQuantity;
+    //var newOrder= new order (pizzaQuantity);
+    newpizza.totalcost = returnCost(toppings,size);
+    $("#outputCost").text(newpizza.reviewpizza());
+    if (toppings.length!=0) {
+      $("form#info").show();
+    }
   })
+
+  $("form#info").submit(function(event) {
+    event.preventDefault();
+    var name = $("#fullName").val();
+    $("#outputInfo").text("Thank you, "+ name+ ". Your order will be there soon.")
+  })
+
 });
