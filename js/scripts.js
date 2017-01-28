@@ -6,6 +6,7 @@
 function pizza(toppings,size) {
   this.toppings=toppings;
   this.size= size;
+  //this.cost=cost;
 }
 function returnCost(toppings,size) {
   if (toppings.length===4) {
@@ -33,11 +34,11 @@ function returnCost(toppings,size) {
 //     return "You want to purchase" + this.pizzaQuantity+  " pizza(s):"+ "The total cost is " + this.totalcost + " dollars.";
 // }
 
-pizza.prototype.reviewpizza = function() {
+pizza.prototype.reviewPizza = function() {
   if (this.toppings.length===0) {
     return "It is required to select at least one topping.";
   } else {
-    return this.size + " size, with " + this.toppings+ ". The total cost is " + this.totalcost + " dollars.";
+    return this.size + " size, with " + this.toppings+ ". The cost is " + this.cost + " dollars.";
   }
 }
 
@@ -80,11 +81,11 @@ $(document).ready(function() {
       toppings.push(topping);
     })
     var size = $("input:radio[name=size]:checked").val();
-    var newpizza= new pizza(toppings,size);
+    var newPizza= new pizza(toppings,size);
     //var pizzaQuantity;
     //var newOrder= new order (pizzaQuantity);
-    newpizza.totalcost = returnCost(toppings,size);
-    $("#outputCost").text(newpizza.reviewpizza());
+    newPizza.cost = returnCost(toppings,size);
+    $("#outputOrder").text(newPizza.reviewPizza());
     if (toppings.length!=0) {
       $("form#info").show();
     }

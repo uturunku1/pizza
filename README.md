@@ -17,13 +17,13 @@ _Does not require a server or setting up a database._
   * Output Example: "It is required to at least select one topping."
 * 2. The program takes the value of variables size and toppings and prototype returns the size and quantity of toppings.
   * Input Example: var size = "small" and var toppings = [pepperoni, Artichoke]
-  * Output Example: The pizza you want to purchase is small size, with the following toppings: Pepperoni,Artichoke.
+  * Output Example: Small size with pepperoni, artichoke.
 * 3. The program uses the value of variable size and variable toppings and returns the total cost of the pizza.
   * Input Example: var size = "small" and var toppings = [pepperoni, Artichoke]
-  * Output Example: The pizza you want to purchase is small size, with the following toppings: Pepperoni,Artichoke.The total cost is 24 dollars.  
-* 3. The program requests input of name and address to do the delivery and confirms the input just entered
+  * Output Example: Small size with pepperoni, artichoke.The cost is 24 dollars.  
+* 4. The program requests input of name and address to do the delivery and gives a confirmation message.
   * Input Example: Name: Stella/ address: 1230 NW, Portland.
-  * Output Example: Your order will be send to Stella at address: 1230 NW, Portland.
+  * Output Example: Thank you, Stella at address: 1230 NW, Portland. The order will be there soon.
 
 ## Known Bugs
 
