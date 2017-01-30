@@ -1,8 +1,4 @@
-// function order(pizzaQuantity) {
-//   this.pizzaQuantity = pizzaQuantity;
-//   this.pizzas = [];
-//   //this.totalcost=totalcost;
-// }
+var arrayCosts= [];
 function pizza(toppings,size, quantity) {
   this.toppings=toppings;
   this.size= size;
@@ -26,16 +22,21 @@ function returnCost(toppings,size, quantity) {
   } else if (size==="Large") {
     costSize= 20;
   }
-  return (costSize+costtoppings)* quantity
+  x = (costSize+costtoppings)* quantity;
+  return x;
 }
 
-// order.prototype.revieworder = function() {
-//   if (this.toppings.length===0 && !click()) {
-//     return "It is required to select at least one topping.";
-//   } else {
-//     return "You want to purchase" + this.pizzaQuantity+  " pizza(s):"+ "The total cost is " + this.totalcost + " dollars.";
-// }
+function returnArrayCosts() {
+  arrayCosts.push(parseInt(x));
+}
 
+function totalCost() {
+  var total= 0;
+  arrayCosts.forEach(function(cost) {
+    total+=cost;
+  })
+  return total;
+}
 pizza.prototype.reviewPizza = function() {
   return this.quantity+" "+this.size + " size, with " + this.toppings+ ". The cost is " + this.cost + " dollars."+"<br>";
 }
@@ -53,23 +54,21 @@ $(document).ready(function() {
     var size = $("input:radio[name=size]:checked").val();
     var quantity= parseFloat($("input:radio[name=quantity]:checked").val());
     var newPizza= new pizza(toppings,size,quantity);
-    //var pizzaQuantity;
-    //var newOrder= new order (pizzaQuantity);
-    newPizza.cost = returnCost(toppings,size, quantity);
+    newPizza.cost = returnCost(toppings,size,quantity);
     if (toppings.length!=0) {
       $("#warning").hide();
       $("#outputOrder").append(newPizza.reviewPizza());
       $("span").show();
+      returnArrayCosts();
     }else {
       $("#warning").show();
     }
-    $("span").click(function() {
-      if (toppings.length!=0) {
-        $("form#info").show();
-      }
-    })
   })
 
+  $("span").click(function() {
+    $("form#info").before("Your total cost today is "+ totalCost()+ " dollars. Where should we send your order?");
+    $("form#info").show();
+  })
 
   $("form#info").submit(function(event) {
     event.preventDefault();

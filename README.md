@@ -24,6 +24,9 @@ _Does not require a server or setting up a database._
 * 4. The program requests input of name and address to do the delivery and gives a confirmation message.
   * Input Example: Name: Stella/ address: 1230 NW, Portland.
   * Output Example: Thank you, Stella at address: 1230 NW, Portland. The order will be there soon.
+* 5. The program adds the different values of variable x(cost) for each time the user submits and order, and gives total cost.
+  * Input Example: x=12;
+  * Output Exaple: Total cost is 12 dollars.
 
 ## Known Bugs
 
